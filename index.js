@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 import filmRoutes from './routes/film.js'
 import theatersRouter from './routes/theaters.js'
 import usersRouter from './routes/users.js'
+import showsRouter from './routes/shows.js'
 
 const app = express()
 dotenv.config()
@@ -17,6 +18,7 @@ app.use(cors())
 app.use('/api/film', filmRoutes)
 app.use('/api/theater', theatersRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/shows', showsRouter)
 
 mongoose.connect(process.env.CONNECTION_URL)
 .then(() => {

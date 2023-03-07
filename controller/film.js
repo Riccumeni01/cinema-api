@@ -39,4 +39,17 @@ export const insertFilm = async (req, res) => {
     }
 }
 
+export const getFilmById = async (req, res) => {
+
+    const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({message: "id non trovato"})
+    try{
+        const film = await Film.findById(id)
+        res.status(200).json(film)
+    }catch(error){
+        res.status(404).json(error.message)
+    }
+}
+
 // TODO: DELETE E PATCH
