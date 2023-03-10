@@ -10,13 +10,21 @@ export const getAllFilm = async (req, res) => {
     }
 }
 
-export const getFilmByName = async (req, res) => {
+export const getFilmWithFilter = async (req, res) => {
     const {name} = req.params
 
+    const query = req.query
+
+    if(query.nome != undefined){
+        query.nome = new RegExp('^' + query.nome, 'm')
+    }
+
+    console.log(query);
+
     try{
-        const films = await Film.find({nome : new RegExp('^' + name, 'm')})
+        const films = await Film.find(query)
         if(films.length == 0){
-            res.status(404).json({message: "non trovato"}) // TODO: Chiedere se è giusto mandare un 404
+            res.status(404).json({message: "non trovato"}) 
         } else{
             res.status(200).json(films)
         }

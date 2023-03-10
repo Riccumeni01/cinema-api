@@ -1,11 +1,11 @@
 import express from 'express'
-import {getAllFilm, getFilmById, getFilmByName, insertFilm} from '../controller/film.js'
+import {getAllFilm, getFilmById, getFilmWithFilter, insertFilm} from '../controller/film.js'
 
 const router = express.Router()
 
 router.get('/', getAllFilm)
-router.get('/:name', getFilmByName)
-// router.get('/:id', getFilmById)
+router.get('/filter/', getFilmWithFilter)
+router.get('/:id', getFilmById)
 
 router.post('/', insertFilm)
 
