@@ -9,3 +9,14 @@ export const getAllUsers = async (req, res) => {
         res.status(404).json({"message" : error.message})
     }
 }
+
+export const insertUser = async (req, res) => {
+    const user = new Users(req.body)
+    try{
+        await user.save()
+
+        res.status(201).json({"message" : "utente aggiunto"})
+    }catch(error){
+        res.status(400).json({"message" : error.message})
+    }
+}

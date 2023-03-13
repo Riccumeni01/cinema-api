@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const filmSchema = mongoose.Schema({
-    locandina: {
+    poster: {
         type: String,
         require: true,
         unique: true
     },
-    nome: {
+    name: {
         type: String,
         require: true,
         unique: true
@@ -16,7 +16,7 @@ const filmSchema = mongoose.Schema({
         require: false,
         unique: true
     },
-    trama: {
+    plot: {
         type: String,
         require: true,
         unique: false
@@ -26,7 +26,7 @@ const filmSchema = mongoose.Schema({
         require: false,
         unique: false
     },
-    genere: {
+    category: {
         type: Array,
         require: true,
         unique: false

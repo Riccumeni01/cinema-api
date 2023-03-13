@@ -1,17 +1,18 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
 const userSchema = mongoose.Schema({
-    nome: {
+    name: {
         type: String,
         require: true,
         unique: false
     },
-    cognome: {
+    surname: {
         type: String,
         require: true,
         unique: false
     },
-    dataNascita: {
+    birthday: {
         type: Date,
         require: true,
         unique: false
@@ -26,7 +27,7 @@ const userSchema = mongoose.Schema({
         require: true,
         unique: false
     },
-    permessi: {
+    permission: {
         type: String,
         require: true,
         unique: false

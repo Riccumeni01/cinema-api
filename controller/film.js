@@ -11,15 +11,11 @@ export const getAllFilm = async (req, res) => {
 }
 
 export const getFilmWithFilter = async (req, res) => {
-    const {name} = req.params
-
     const query = req.query
 
-    if(query.nome != undefined){
-        query.nome = new RegExp('^' + query.nome, 'm')
+    if(query.name != undefined){
+        query.name = new RegExp('^' + query.name, 'm')
     }
-
-    console.log(query);
 
     try{
         const films = await Film.find(query)
@@ -43,7 +39,7 @@ export const insertFilm = async (req, res) => {
         film.save()
         res.status(201).json({"message" : "film aggiunto"})
     }catch(error){
-        res.status(400).json({"message" : "campi non validi"})
+        res.status(400).json({"message" : error.message})
     }
 }
 

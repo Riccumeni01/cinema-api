@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
 const theaterSchema = mongoose.Schema({
-    piano: {
+    floor: {
         type: Number,
         require: true,
         unique: true
     },
-    posti: {
+    seats: {
         type: Number,
         require: true,
         unique: false
